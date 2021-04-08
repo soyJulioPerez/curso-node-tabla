@@ -15,7 +15,7 @@ const crearArchivo1 = (base = 5) => {
   console.log(`tabla-${base}.txt creado`);
 }
 
-const crearArchivo2 = (base = 5) => {
+const crearArchivo2 = (base = 5, listar = false) => {
   return new Promise( (resolve, reject) => {
     let salida = '';
     salida += '===============\n';
@@ -27,6 +27,7 @@ const crearArchivo2 = (base = 5) => {
 
     }
 
+    if (listar) { console.log(salida); }
     fs.writeFileSync(`tabla-${base}.txt`, salida);
     resolve(`tabla-${base}.txt creado`);
   });
