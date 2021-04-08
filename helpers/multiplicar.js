@@ -1,5 +1,6 @@
 const fs = require('fs');
 const colors = require('colors');
+const path = require('path');
 
 const crearArchivo1 = (base = 5) => {
   let salida = '';
@@ -27,7 +28,8 @@ const crearArchivo2 = (base, listar, hasta) => {
     }
 
     if (listar) { console.log(consola); }
-    fs.writeFileSync(`tabla-${base}.txt`, salida);
+    const fileName = path.join(__dirname,'../salida',`tabla-${base}.txt`);
+    fs.writeFileSync(fileName, salida);
     resolve(`tabla-${base}.txt creado`);
   });
 }
@@ -58,7 +60,7 @@ const crearArchivo3 = async (base = 5) => {
 
     }
 
-    fs.writeFileSync(`tabla-${base}.txt`, salida);
+    fs.writeFileSync(`./salida/tabla-${base}.txt`, salida);
     console.log(`tabla-${base}.txt creado`);
     return `tabla-${base}.txt creado`;
   } catch (error) {
